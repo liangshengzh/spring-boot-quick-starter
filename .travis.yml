@@ -1,0 +1,11 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+script:
+  - mvn clean install
+  - mkdir workspace && cd workspace
+  - mvn archetype:generate -DarchetypeGroupId=cn.devlab.spring -DarchetypeArtifactId=spring-boot-quick-starter -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=cn.devlab.spring -DartifactId=spring-boot-app -Dversion=1.0.0 -DinteractiveMode=false
+  - cd spring-boot-app && mvn clean test
+  - cd ../.. && rm -rf workspace
